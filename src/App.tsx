@@ -9,6 +9,7 @@ export const App = () => {
 
   const generateImage = async () => {
     try {
+      if (isGenerating) return; // Prevent multiple submissions
       setIsGenerating(true);
       setImage(null);
       const { data } = await axios.post(`https://comfyui-beckend.vercel.app/`, {
@@ -40,7 +41,6 @@ export const App = () => {
               block
               size="large"
               htmlType="submit"
-              onClick={generateImage}
               loading={isGenerating}
             >
               {isGenerating ? 'Generating image...' : 'Generate image'}
