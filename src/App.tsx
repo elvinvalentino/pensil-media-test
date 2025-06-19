@@ -24,7 +24,7 @@ export const App = () => {
 
   return (
     <>
-      <h1>ComfyUI Test</h1>
+      <h1>Elvin Valentino - ComfyUI Test</h1>
       <Flex vertical>
         <Space direction="vertical">
           <Form onFinish={generateImage}>
