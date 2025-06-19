@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Space, Image } from 'antd';
+import { Button, Flex, Input, Space, Image, Form } from 'antd';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -27,21 +27,25 @@ export const App = () => {
       <h1>ComfyUI Test</h1>
       <Flex vertical>
         <Space direction="vertical">
-          <Input
-            onChange={e => setInput(e.target.value)}
-            value={input}
-            size="large"
-            placeholder="Type to generate an image"
-          />
-          <Button
-            type="primary"
-            block
-            size="large"
-            onClick={generateImage}
-            loading={isGenerating}
-          >
-            {isGenerating ? 'Generating image...' : 'Generate image'}
-          </Button>
+          <Form onFinish={generateImage}>
+            <Input
+              onChange={e => setInput(e.target.value)}
+              value={input}
+              size="large"
+              placeholder="Type to generate an image"
+              style={{ marginBottom: '8px' }}
+            />
+            <Button
+              type="primary"
+              block
+              size="large"
+              htmlType="submit"
+              onClick={generateImage}
+              loading={isGenerating}
+            >
+              {isGenerating ? 'Generating image...' : 'Generate image'}
+            </Button>
+          </Form>
 
           {image && (
             <Flex justify="center">
